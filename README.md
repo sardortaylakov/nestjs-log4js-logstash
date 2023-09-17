@@ -16,7 +16,9 @@ NestJS sample app that uses Log4js logger with Logstash
 6. Update `src/app.module.ts` to configure `Log4jsModule` with 2 appenders, logstash and stdout
 7. Update `src/main.ts` to use `Log4jsLogger` as app logger
 8. Configure [ELK stack](https://www.elastic.co/blog/getting-started-with-the-elastic-stack-and-docker-compose) using docker-compose
-    * add docker-compose.yml file with container configurations for ELK
+    * add `docker-compose.yml` file with container configurations for ELK
     * under `logstash` directory, add config files for logstash
 
-Once app and containers are running, you can see startup logs both in console and in Kibana by navigating to http://localhost:5601.
+## View logs in Kibana
+
+Once app and containers are running, you can see startup logs both in console and in Kibana by navigating to http://localhost:5601. Index is automatically created with `logstash-` prefix in the name. You can locate index under Management > Stack Management > Data > Index Management. Create index pattern as `logstash-*` under Management > Stack Management > Kibana > Index Patterns and view your logs sent from the application under Analytics > Discover specifying index pattern you created, that is `logstash-*`.
